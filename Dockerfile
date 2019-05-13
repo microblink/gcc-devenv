@@ -15,6 +15,8 @@ RUN git lfs install && \
     echo "[core]" >> ~/.gitconfig && \
     echo "	excludesfile = /root/.gitignore_global" >> ~/.gitconfig
 
+ENV NINJA_STATUS="[%f/%t %c/sec] "
+
 # create gcc/g++ symlinks in /usr/bin (compatibility with legacy gcc conan profile)
 RUN ln -s /usr/local/bin/gcc /usr/bin/gcc && \
     ln -s /usr/local/bin/g++ /usr/bin/g++
