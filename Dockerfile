@@ -28,7 +28,11 @@ RUN ln -s /usr/local/bin/gcc /usr/bin/gcc && \
     rm /usr/bin/nm /usr/bin/ranlib /usr/bin/ar && \
     ln -s /usr/local/bin/gcc-ar /usr/bin/ar && \
     ln -s /usr/local/bin/gcc-nm /usr/bin/nm && \
-    ln -s /usr/local/bin/gcc-ranlib /usr/bin/ranlib
+    ln -s /usr/local/bin/gcc-ranlib /usr/bin/ranlib && \
+    rm /usr/local/bin/nm /usr/local/bin/ranlib /usr/local/bin/ar && \
+    ln -s /usr/local/bin/gcc-ar /usr/local/bin/ar && \
+    ln -s /usr/local/bin/gcc-nm /usr/local/bin/nm && \
+    ln -s /usr/local/bin/gcc-ranlib /usr/local/bin/ranlib
 
 ARG CMAKE_VERSION=3.14.4
 
