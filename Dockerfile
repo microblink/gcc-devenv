@@ -10,7 +10,7 @@ COPY --from=git /usr/local /usr/local/
 
 # install LFS and setup global .gitignore for both
 # root and every other user logged with -u user:group docker run parameter
-RUN yum -y install openssh-clients glibc-static && \
+RUN yum -y install openssh-clients glibc-static java-devel && \
     git lfs install && \
     echo "~*" >> /.gitignore_global && \
     echo ".DS_Store" >> /.gitignore_global && \
@@ -19,7 +19,8 @@ RUN yum -y install openssh-clients glibc-static && \
     cp /root/.gitconfig /.config && \
     dbus-uuidgen > /etc/machine-id
 
-ENV NINJA_STATUS="[%f/%t %c/sec] "
+ENV NINJA_STATUS="[%f/%t %c/sec] "  \
+    JAVA_HOME=/usr
 
 # create gcc/g++ symlinks in /usr/bin (compatibility with legacy gcc conan profile)
 # and also replace binutils tools with GCC version
