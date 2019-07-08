@@ -12,7 +12,7 @@ COPY --from=ccache /usr/local /usr/local/
 
 # install LFS and setup global .gitignore for both
 # root and every other user logged with -u user:group docker run parameter
-RUN yum -y install openssh-clients glibc-static java-devel which && \
+RUN yum -y install openssh-clients glibc-static java-devel which gtk3-devel && \
     git lfs install && \
     echo "~*" >> /.gitignore_global && \
     echo ".DS_Store" >> /.gitignore_global && \
@@ -57,8 +57,8 @@ RUN cd /home && \
 
 ARG CONAN_VERSION=1.16.1
 
-# download and install conan and LFS and set global .gitignore
-RUN python3 -m pip install conan==${CONAN_VERSION}
+# download and install conan and grip
+RUN python3 -m pip install conan==${CONAN_VERSION} grip
 
 # create development folders (mount points)
 RUN mkdir -p /home/source           && \
