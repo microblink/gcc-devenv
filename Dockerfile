@@ -12,7 +12,7 @@ COPY --from=ccache /usr/local /usr/local/
 
 # install LFS and setup global .gitignore for both
 # root and every other user logged with -u user:group docker run parameter
-RUN yum -y install openssh-clients glibc-static java-devel which gtk3-devel zip bzip2 make && \
+RUN yum -y install openssh-clients glibc-static java-devel which gtk3-devel zip bzip2 make xorg-x11-server-Xvfb && \
     git lfs install && \
     echo "~*" >> /.gitignore_global && \
     echo ".DS_Store" >> /.gitignore_global && \
@@ -59,6 +59,16 @@ ARG CONAN_VERSION=1.18.2
 
 # download and install conan and grip
 RUN python3 -m pip install conan==${CONAN_VERSION} grip
+
+# download and install chrome and setup runner script
+RUN cd /home && \
+    curl -o chrome.rpm https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm && \
+    yum -y install chrome.rpm && \
+    rm chrome.rpm && \
+    echo "#!/bin/bash" > /usr/local/bin/chrome-headless && \
+    echo "" >> /usr/local/bin/chrome-headless && \
+    echo "xvfb-run -a -e /dev/stdout google-chrome-stable --no-sandbox -start-maximized --disable-gpu --use-gl=swiftshader \"\$@\"" >> /usr/local/bin/chrome-headless && \
+    chmod +x /usr/local/bin/chrome-headless
 
 # create development folders (mount points)
 RUN mkdir -p /home/source           && \
