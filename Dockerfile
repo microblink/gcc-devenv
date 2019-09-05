@@ -43,7 +43,7 @@ RUN ln -s /usr/local/bin/gcc /usr/bin/gcc && \
     ln -s /usr/local/bin/gcc-ranlib /usr/local/bin/ranlib && \
     ln -s /usr/local/bin/ccache /usr/bin/ccache
 
-ARG CMAKE_VERSION=3.15.2
+ARG CMAKE_VERSION=3.15.3
 
 # download and install CMake
 RUN cd /home && \
@@ -55,7 +55,7 @@ RUN cd /home && \
     cd .. && \
     rm -rf *
 
-ARG CONAN_VERSION=1.18.1
+ARG CONAN_VERSION=1.18.2
 
 # download and install conan and grip
 RUN python3 -m pip install conan==${CONAN_VERSION} grip
