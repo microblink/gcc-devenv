@@ -52,7 +52,7 @@ RUN ln -s /usr/local/bin/gcc /usr/bin/gcc && \
 #     rm firefox.tar.bz2 && \
 #     ln -s /usr/local/firefox/firefox /usr/local/bin/firefox
 
-ARG CMAKE_VERSION=3.15.5
+ARG CMAKE_VERSION=3.16.3
 
 # download and install CMake
 RUN cd /home && \
@@ -64,7 +64,7 @@ RUN cd /home && \
     cd .. && \
     rm -rf *
 
-ARG CONAN_VERSION=1.18.5
+ARG CONAN_VERSION=1.21.1
 
 # download and install conan and grip
 RUN python3 -m pip install conan==${CONAN_VERSION} grip
