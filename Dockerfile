@@ -64,7 +64,7 @@ RUN cd /home && \
     cd .. && \
     rm -rf *
 
-ARG CONAN_VERSION=1.21.1
+ARG CONAN_VERSION=1.22.1
 
 # download and install conan and grip
 RUN python3 -m pip install conan==${CONAN_VERSION} grip
