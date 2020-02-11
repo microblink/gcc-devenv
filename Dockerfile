@@ -52,7 +52,7 @@ RUN ln -s /usr/local/bin/gcc /usr/bin/gcc && \
 #     rm firefox.tar.bz2 && \
 #     ln -s /usr/local/firefox/firefox /usr/local/bin/firefox
 
-ARG CMAKE_VERSION=3.16.3
+ARG CMAKE_VERSION=3.16.4
 
 # download and install CMake
 RUN cd /home && \
