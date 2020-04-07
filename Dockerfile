@@ -3,7 +3,7 @@ FROM microblinkdev/centos-ccache:3.7.11 as ccache
 FROM microblinkdev/centos-git:2.28.0 as git
 FROM microblinkdev/centos-python:3.8.0 as python
 
-FROM microblinkdev/centos-gcc:9.2.0
+FROM microblinkdev/centos-gcc:9.3.0
 
 COPY --from=ninja /usr/local/bin/ninja /usr/local/bin/
 COPY --from=python /usr/local /usr/local/
