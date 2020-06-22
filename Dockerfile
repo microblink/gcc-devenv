@@ -1,6 +1,6 @@
 FROM microblinkdev/centos-ninja:1.10.0 as ninja
-FROM microblinkdev/centos-ccache:3.7.9 as ccache
-FROM microblinkdev/centos-git:2.26.2 as git
+FROM microblinkdev/centos-ccache:3.7.10 as ccache
+FROM microblinkdev/centos-git:2.27.0 as git
 FROM microblinkdev/centos-python:3.8.0 as python
 
 FROM microblinkdev/centos-gcc:8.3.0
@@ -52,7 +52,7 @@ RUN ln -s /usr/local/bin/gcc /usr/bin/gcc && \
 #     rm firefox.tar.bz2 && \
 #     ln -s /usr/local/firefox/firefox /usr/local/bin/firefox
 
-ARG CMAKE_VERSION=3.17.2
+ARG CMAKE_VERSION=3.17.3
 
 # download and install CMake
 RUN cd /home && \
@@ -64,7 +64,7 @@ RUN cd /home && \
     cd .. && \
     rm -rf *
 
-ARG CONAN_VERSION=1.24.1
+ARG CONAN_VERSION=1.25.2
 
 # download and install conan and grip
 RUN python3 -m pip install conan==${CONAN_VERSION} grip
