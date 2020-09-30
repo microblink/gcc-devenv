@@ -31,8 +31,11 @@ ENV NINJA_STATUS="[%f/%t %c/sec] "  \
     JAVA_HOME=/usr
 
 # support for conan packages to discover OpenSSL 1.1.1
-ENV CONAN_CMAKE_CUSTOM_OPENSSL_ROOT_DIR=/usr/include/openssl11
-ENV CONAN_CMAKE_CUSTOM_OPENSSL_LIBRARIES=/usr/lib64/openssl11
+ENV CONAN_CMAKE_CUSTOM_OPENSSL_ROOT_DIR=/usr/include/openssl11      \
+    CONAN_CMAKE_CUSTOM_OPENSSL_LIBRARIES=/usr/lib64/openssl11       \
+    CONAN_CMAKE_CUSTOM_OPENSSL_SSL_LIBRARY=/usr/lib64/openssl11     \
+    CONAN_CMAKE_CUSTOM_OPENSSL_CRYPTO_LIBRARY=/usr/lib64/openssl11  \
+    CONAN_CMAKE_CUSTOM_OPENSSL_INCLUDE_DIR=/usr/include/openssl11
 
 # create gcc/g++ symlinks in /usr/bin (compatibility with legacy gcc conan profile)
 # and also replace binutils tools with GCC version
