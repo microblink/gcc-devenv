@@ -13,7 +13,7 @@ COPY --from=ccache /usr/local /usr/local/
 # install LFS and setup global .gitignore for both
 # root and every other user logged with -u user:group docker run parameter
 RUN yum -y install epel-release && \
-    yum -y install openssh-clients glibc-static java-devel which gtk3-devel zip bzip2 make libXt libjpeg-devel openssl11-devel && \
+    yum -y install openssh-clients glibc-static java-devel which gtk3-devel zip bzip2 make libXt libjpeg-devel openssl11-devel openblas-devel && \
     git lfs install && \
     echo "~*" >> /.gitignore_global && \
     echo ".DS_Store" >> /.gitignore_global && \
@@ -60,7 +60,7 @@ RUN ln -s /usr/local/bin/gcc /usr/bin/gcc && \
 #     rm firefox.tar.bz2 && \
 #     ln -s /usr/local/firefox/firefox /usr/local/bin/firefox
 
-ARG CMAKE_VERSION=3.18.3
+ARG CMAKE_VERSION=3.18.4
 
 # download and install CMake
 RUN cd /home && \
@@ -72,7 +72,7 @@ RUN cd /home && \
     cd .. && \
     rm -rf *
 
-ARG CONAN_VERSION=1.29.2
+ARG CONAN_VERSION=1.30.2
 
 # download and install conan and grip
 RUN python3 -m pip install conan==${CONAN_VERSION} grip
